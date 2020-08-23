@@ -1,8 +1,9 @@
 class VideosController < ApplicationController
   include Pagy::Backend
+  before_action :authenticate_user!, only: %i[new create]
 
   def index
-    videos = Video.order('created_at DESC')
+    videos = Video.includes(:user).order('created_at DESC')
     @pagy, @videos = pagy(videos)
   end
 
@@ -11,7 +12,7 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video_params)
+    @video = current_user.videos.new(video_params)
     if @video.save
       flash[:success] = 'Video added!'
       redirect_to root_url
