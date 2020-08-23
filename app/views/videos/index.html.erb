@@ -1,0 +1,25 @@
+<% if @videos.any? %>
+  <div class="container">
+    <h1>Latest videos</h1>
+    <% @videos.each do |video| %>
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-6">
+            <iframe width="420" height="238" src="https://www.youtube.com/embed/<%= video.uid %>"></iframe>
+          </div>
+          <div class="col-md-6">
+            <h5 class="card-title"><%= video.title %></h5>
+            <!-- <p>Share by: </p> -->
+            <p>Published at: <%= video.published_at.strftime('%-d %B %Y') %></p>
+            <p class="card-text">Description: <%= video.description&.truncate(250) %></p>
+            <p>
+              <!-- <span class="glyphicon glyphicon glyphicon-thumbs-up"></span> <%#= video.likes %>
+              <span class="glyphicon glyphicon glyphicon-thumbs-down"></span> <%#= video.dislikes %> -->
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= pagy_bootstrap_nav(@pagy).html_safe %>
+<% end %>
