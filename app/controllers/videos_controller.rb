@@ -1,6 +1,9 @@
 class VideosController < ApplicationController
+  include Pagy::Backend
+
   def index
-    @videos = Video.order('created_at DESC')
+    videos = Video.order('created_at DESC')
+    @pagy, @videos = pagy(videos)
   end
 
   def new

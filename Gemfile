@@ -29,6 +29,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'rails-observers'
+gem 'pagy', '~> 3.5'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
