@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_22_203350) do
+ActiveRecord::Schema.define(version: 2020_08_23_173819) do
 
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_08_22_203350) do
     t.datetime "published_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["uid"], name: "index_videos_on_uid", unique: true
   end
 

@@ -1,11 +1,24 @@
-<div class="navbar navbar-inverse">
-  <div class="container">
-    <div class="navbar-header">
-      <%= link_to 'Youtube on Rails', root_path, class: 'navbar-brand' %>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><%= link_to 'Videos', root_path %></li>
-      <li><%= link_to 'Add Video', new_video_path %></li>
-    </ul>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow">
+  <div class="col-sm-5">
+    <%= link_to 'Youtube on Rails', root_path, class: 'navbar-brand' %>
+  </div>
+  <div class="col-sm-7">
+    <% if user_signed_in? %>
+      <div class="d-flex justify-content-end">
+        <div class="text-light mx-sm-3">Welcome <%= current_user.username %></div>
+        <div class="mx-sm-3"><%= link_to 'Share a Video', new_video_path %></div>
+        <div><%= link_to 'Logout', destroy_user_session_path, method: :delete %></div>
+      </div>
+    <% else %>
+      <%= form_for :user, method: :post, url: user_session_path, html: { class: 'form-inline' } do |f| %>
+        <div class="form-group mb-2">
+          <%= f.text_field :username, class: 'form-control', placeholder: 'username' %>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+          <%= f.password_field :password, class: 'form-control', placeholder: 'password' %>
+        </div>
+        <%= f.submit 'Login / Register', class: 'btn btn-primary mb-2' %>
+      <% end %>
+    <% end %>
   </div>
 </div>

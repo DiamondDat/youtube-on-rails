@@ -1,6 +1,7 @@
-<% if @videos.any? %>
+<% if @videos.empty? %>
+  <h5>No videos</h5>
+<% else %>
   <div class="container">
-    <h1>Latest videos</h1>
     <% @videos.each do |video| %>
       <div class="card mb-3">
         <div class="row no-gutters">
@@ -9,7 +10,7 @@
           </div>
           <div class="col-md-6">
             <h5 class="card-title"><%= video.title %></h5>
-            <!-- <p>Share by: </p> -->
+            <p>Share by: <%= video.username %> </p>
             <p>Published at: <%= video.published_at.strftime('%-d %B %Y') %></p>
             <p class="card-text">Description: <%= video.description&.truncate(250) %></p>
             <p>

@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'devise'
 gem 'yt'
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap', '~> 4.5.2'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
