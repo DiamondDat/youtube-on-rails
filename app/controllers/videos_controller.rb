@@ -17,6 +17,7 @@ class VideosController < ApplicationController
       flash[:success] = 'Video added!'
       redirect_to root_url
     else
+      flash[:alert] = @video.errors.full_messages.join(', ')
       render :new
     end
   end
