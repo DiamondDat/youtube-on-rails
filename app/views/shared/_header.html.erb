@@ -10,7 +10,7 @@
         <div><%= link_to 'Logout', destroy_user_session_path, method: :delete %></div>
       </div>
     <% else %>
-      <%= form_for :user, method: :post, url: user_session_path, html: { class: 'form-inline' } do |f| %>
+      <%= form_for :user, method: :post, url: create_session_path, html: { class: 'form-inline' } do |f| %>
         <div class="form-group mb-2">
           <%= f.text_field :username, class: 'form-control', placeholder: 'username' %>
         </div>
